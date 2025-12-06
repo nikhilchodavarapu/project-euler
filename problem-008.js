@@ -21,3 +21,31 @@ const largestProductInSeries = (num, numOfDigits) => {
 }
 
 largestProductInSeries(thousandDigitNumber, 13)
+
+// Optimised one (Zero-Skip Optimization)
+const largestProductInSeriesOptimised = (num, k) => {
+  let maxProduct = 0;
+
+  for (let i = 0; i <= num.length - k; ) {
+    const slice = num.slice(i, i + k);
+
+    // If slice contains zero, skip to after the zero
+    const zeroIndex = slice.indexOf("0");
+    if (zeroIndex !== -1) {
+      i += zeroIndex + 1;
+      continue;
+    }
+
+    // Compute product only when no zero is present
+    let product = 1;
+    for (const c of slice) product *= c - "0";
+
+    if (product > maxProduct) maxProduct = product;
+
+    i++;
+  }
+
+  return maxProduct;
+};
+
+largestProductInSeriesOptimised()

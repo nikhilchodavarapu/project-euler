@@ -5,7 +5,7 @@
 // There exists exactly one Pythagorean triplet for which 𝑎 +𝑏 +𝑐 =1000.
 // Find the product 𝑎⁢𝑏⁢𝑐.
 
-const specialPythagoeranTriplet = () => {
+const specialPythagoreanTriplet = () => {
   for (let a = 1; a < 1000; a++) {
     for (let b = 1; b < 1000; b++) {
       for (let c = 1; c < 1000; c++) {
@@ -17,4 +17,18 @@ const specialPythagoeranTriplet = () => {
   }
 };
 
-specialPythagoeranTriplet()
+specialPythagoreanTriplet()
+
+// Optimised One 
+const specialPythagoreanTripletOptimised = () => {
+  for (let a = 1; a < 1000; a++) {
+    for (let b = a + 1; b < 1000; b++) {
+      const c = 1000 - a - b;
+      if (a*a + b*b === c*c) {
+        return a * b * c;
+      }
+    }
+  }
+};
+
+specialPythagoreanTripletOptimised()

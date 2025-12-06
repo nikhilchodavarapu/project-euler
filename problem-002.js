@@ -18,3 +18,23 @@ const sumOfEvenValuedTermsInFibbSeq = (limit) => {
 }
 
 sumOfEvenValuedTermsInFibbSeq(4000000)
+
+// Efficient Way
+const sumEvenFibonacci = (limit) => {
+  let e1 = 2;
+  let e2 = 8;
+  let sum = e1 + e2;
+
+  while (true) {
+    const e3 = 4 * e2 + e1; // generates next even Fibonacci
+    if (e3 > limit) break;
+    sum += e3;
+
+    e1 = e2;
+    e2 = e3;
+  }
+
+  return sum;
+};
+
+sumEvenFibonacci(4000000)

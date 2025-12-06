@@ -18,3 +18,13 @@ const sumSquareDiff = (limit) => {
 }
 
 sumSquareDiff(100)
+
+// Optimized (Formula Based)
+
+const sumSquareDiffOptimized = (n) => {
+  const sum = (n * (n + 1)) / 2;
+  const sumOfSquares = (n * (n + 1) * (2 * n + 1)) / 6;
+  return sum * sum - sumOfSquares;
+};
+
+sumSquareDiffOptimized(100)

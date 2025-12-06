@@ -21,3 +21,33 @@ const nthPrimeNumber = (n) => {
 }
 
 nthPrimeNumber(10001)
+
+// Optimised one 
+const isPrimeOptimised = (num) => {
+  if (num < 2) return false;
+  if (num === 2) return true;
+  if (num % 2 !== 1) return false; // even numbers > 2 are not prime
+
+  const limit = Math.sqrt(num);
+  for (let i = 3; i <= limit; i += 2) {
+    if (num % i === 0) return false;
+  }
+  return true;
+};
+
+const nthPrimeNumberOptimised = (n) => {
+  if (n === 1) return 2;
+
+  let count = 1; // prime #1 is 2
+  let candidate = 3; // start checking only odd numbers
+
+  while (count < n) {
+    if (isPrimeOptimised(candidate)) count++;
+    candidate += 2; // skip even numbers
+  }
+
+  return candidate - 2; // last prime found
+};
+
+
+nthPrimeNumberOptimised(10001)

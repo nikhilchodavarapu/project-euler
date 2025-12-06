@@ -17,3 +17,16 @@ const smallestMultiple = (limit, start = 1) => {
 }
 
 smallestMultiple(20, 2520)
+
+// Optimized One
+const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+
+const smallestMultipleOptimized = (limit) => {
+  let result = 1;
+  for (let i = 1; i <= limit; i++) {
+    result = (result * i) / gcd(result, i);
+  }
+  return result;
+};
+
+smallestMultipleOptimized(20);
