@@ -5,9 +5,14 @@
   |__|__|
 */
 // How many such routes are there through a 20 ×20 grid?
-import { permutations, intersect } from "jsr:@std/collections";
 
 const findNoOfRoutes = (size) => {
-  const pattern = "1".repeat(size) + "2".repeat(size);
-  return intersect(permutations(pattern).map(x => x.join(""))).length;
-}
+  let routes = 1;
+  const limit = size * 2 + 1;
+  for (let i = size + 1, j = 1; i < limit, j < size + 1; i++, j++) {
+    routes = routes * i / j; 
+  }
+  return routes;
+};
+
+findNoOfRoutes(20)
